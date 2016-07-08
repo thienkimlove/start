@@ -12,6 +12,8 @@ sed -i -e "s/DB_USERNAME=homestead/DB_USERNAME=$mysql_username/g" .env
 sed -i -e "s/DB_PASSWORD=secret/DB_PASSWORD=$mysql_password/g" .env
 sed -i -e "s/SESSION_DRIVER=file/SESSION_DRIVER=redis/g" .env
 
+mysql -u$mysql_username -p$mysql_password -e "create database $mysql_database_name;"
+
 touch storage/logs/laravel.log
 chmod -R 777 storage
 composer install
